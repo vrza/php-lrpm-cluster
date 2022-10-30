@@ -1,0 +1,91 @@
+= PHP-LRPM Clustering
+
+Clustering support for PHP-LRPM, including different sharding strategies.
+
+== Sharding Strategies
+
+You can either write your own `ShardingConfigurationFilter` or use one of the built-in filters.
+
+=== Balanced
+
+Use the `BalancedShardingConfigurationFilter` when either:
+
+- scaling involves restarting the entire cluster
+- perfect load balancing is necessary
+
+[cols="1,1"]
+|===
+|Pros |Cons
+
+|Perfect load balancing |Potentially large number of disrupted processes when rescaling
+|===
+
+=== Rendezvous Hashing
+
+Use the `RendezvousHashingShardingConfigurationFilter` when both:
+
+- minimal worker process disruption is highly desirable
+- load balancing biased towards certain nodes is tolerable
+
+[cols="1,1"]
+|===
+|Pros |Cons
+
+|Minimal disruption when rescaling |Biased load balancing
+|===
+
+=== Simple hashing
+
+Use the `HashingShardingConfigurationFilter` to achieve:
+
+- decent (but not perfect) load balancing
+- some (but not complete) worker process disruption when cluster is rescaled
+
+[cols="1,1"]
+|===
+|Pros |Cons
+
+|Strikes a balance between load balancing and disruption |Guarantees neither perfect load balancing nor minimal disruption
+|===
+
+== Cluster Configuration and Providers
+
+Cluster configuration parameters are
+
+- total number of nodes in the cluster
+- zero-based index of current node
+
+You can either write your own `ClusterConfigurationProvider` or use one of the built-in providers.
+
+=== Environment-based Cluster Configuration Provider
+
+Use the `EnvironmentBasedClusterConfigurationProvider` to load cluster configuration from environment variables `PHP_LRPM_NUMBER_OF_INSTANCES` and `PHP_LRPM_INSTANCE_NUMBER`. Default variable names can be overridden.
+
+== File-based Cluster Configuration Provider
+
+Use the `FileBasedClusterConfigurationProvider` to load cluster configuration from a JSON configuration file, e.g.:
+
+[source,json]
+----
+{
+    "numberOfInstances": 3,
+    "instanceNumber" : 2
+}
+----
+
+== Setup
+
+Add the following to your `composer.json`:
+
+[source,json]
+----
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/vrza/php-lrpm-cluster"
+        }
+    ],
+    "require": {
+        "php-lrpm/php-lrpm-cluster": "dev-main"
+    }
+----
