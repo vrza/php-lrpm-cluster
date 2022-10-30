@@ -61,7 +61,7 @@ You can either write your own `ClusterConfigurationProvider` or use one of the b
 
 Use the `EnvironmentBasedClusterConfigurationProvider` to load cluster configuration from environment variables `PHP_LRPM_NUMBER_OF_INSTANCES` and `PHP_LRPM_INSTANCE_NUMBER`. Default variable names can be overridden.
 
-== File-based Cluster Configuration Provider
+=== File-based Cluster Configuration Provider
 
 Use the `FileBasedClusterConfigurationProvider` to load cluster configuration from a JSON configuration file, e.g.:
 
