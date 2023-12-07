@@ -37,7 +37,7 @@
     ],
     "require": {
         "php": ">=7.1",
-        "php-lrpm/php-lrpm": "dev-main",
+        "php-lrpm/php-lrpm": "dev-rename-deps",
         "php-rendezvous-hashing/php-rendezvous-hashing": "dev-main"
     },
     "autoload": {
