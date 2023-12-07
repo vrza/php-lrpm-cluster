@@ -9,12 +9,14 @@ use RuntimeException;
 
 abstract class ShardingConfigurationSource implements ConfigurationSource
 {
-    private $confSource;
-    private $clusterConfProvider;
-    /**
-     * @var ShardingConfigurationFilter
-     */
-    private $configurationFilter;
+    /** @var ConfigurationSource */
+    protected $confSource;
+
+    /** @var ClusterConfigurationProvider */
+    protected $clusterConfProvider;
+
+    /** @var ShardingConfigurationFilter */
+    protected $configurationFilter;
 
     abstract public function __construct();
     /*
