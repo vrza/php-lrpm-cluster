@@ -23,7 +23,7 @@ class EnvironmentBasedClusterConfigurationProvider implements ClusterConfigurati
 
     public function loadClusterConfiguration(): ClusterConfiguration
     {
-        $sInstanceNum = getenv($this->varInstanceNum) ?: '1';
+        $sInstanceNum = getenv($this->varInstanceNum) ?: '0';
         if (!ctype_digit($sInstanceNum)) {
             $errMsg = "Instance Number is not an integer value: {$this->varInstanceNum}={$sInstanceNum}";
             throw new ClusterConfigurationValidationException($errMsg);
