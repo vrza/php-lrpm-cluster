@@ -6,7 +6,7 @@ use PHPLRPM\Cluster\Filters\ShardingConfigurationFilter;
 use PHPLRPM\Cluster\Providers\ClusterConfigurationProvider;
 use PHPLRPM\ConfigurationSource;
 
-class ShardingConfigurationSource implements ConfigurationSource
+abstract class ShardingConfigurationSource implements ConfigurationSource
 {
     private $confSource;
     private $clusterConfProvider;
@@ -15,12 +15,14 @@ class ShardingConfigurationSource implements ConfigurationSource
      */
     private $configurationFilter;
 
-    public function __construct(ConfigurationSource $confSource, ClusterConfigurationProvider $clusterConfProvider, ShardingConfigurationFilter $configurationFilter)
-    {
+    abstract public function __construct();
+    /*
+     {
         $this->confSource = $confSource;
         $this->clusterConfProvider = $clusterConfProvider;
         $this->configurationFilter = $configurationFilter;
-    }
+     }
+     */
 
     public function loadConfiguration(): array
     {
