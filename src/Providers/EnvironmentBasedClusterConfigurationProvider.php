@@ -22,14 +22,14 @@ class EnvironmentBasedClusterConfigurationProvider implements ClusterConfigurati
 
     public function loadClusterConfiguration(): ClusterConfiguration
     {
-        $sInstanceNum = getenv($this->varInstanceNum);
+        $sInstanceNum = getenv($this->varInstanceNum) ?: 1;
         if (!ctype_digit($sInstanceNum)) {
             $errMsg = "Instance Number is not an integer value: {$this->varInstanceNum}={$sInstanceNum}";
             throw new ClusterConfigurationValidationException($errMsg);
         }
         $instanceNumber = intval($sInstanceNum);
 
-        $sNumOfInstances = getenv($this->varNumOfInstances);
+        $sNumOfInstances = getenv($this->varNumOfInstances) ?: 1;
         if (!ctype_digit($sNumOfInstances)) {
             $errMsg = "Number of instances is not an integer value: {$this->varNumOfInstances}={$sNumOfInstances}";
             throw new ClusterConfigurationValidationException($errMsg);
