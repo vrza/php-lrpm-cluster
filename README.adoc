@@ -4,7 +4,7 @@ Clustering support for PHP-LRPM, including different sharding strategies.
 
 == Usage
 
-You should extend abstract `PHPLRPM\Cluster\ShardingConfigurationSource` class and implement zero-arguments constructor which will be initializing instances of `PHPLRPM\ConfigurationSource`, `PHPLRPM\Cluster\Providers\ClusterConfigurationProvider` and `PHPLRPM\Cluster\Filters\ShardingConfigurationFilter`:
+You should extend the abstract `PHPLRPM\Cluster\ShardingConfigurationSource` class and implement a nullary (zero-argument) constructor which will be initializing instances of `PHPLRPM\ConfigurationSource`, `PHPLRPM\Cluster\Providers\ClusterConfigurationProvider` and `PHPLRPM\Cluster\Filters\ShardingConfigurationFilter`:
 
 [source,php]
 ----
@@ -25,12 +25,12 @@ class MyLRPMWorkerShardingConfiguration extends ShardingConfigurationSource
 }
 ----
 
-Then you can pass it to LRPM binary as an argument:
-
+Then you may provide MyLRPMWorkerShardingConfiguration as regular ConfigurationSource for PHP-LRPM, e.g.
 [source,console]
 ----
-bin/lrpm '\MyNamespace\MyLRPMWorkerShardingConfiguration'
+lrpm '\MyNamespace\MyLRPMWorkerShardingConfiguration'
 ----
+See https://github.com/vrza/php-lrpm#usage for more details.
 
 == Sharding Strategies
 
