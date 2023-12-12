@@ -8,14 +8,15 @@ You should extend abstract `PHPLRPM\Cluster\ShardingConfigurationSource` class a
 
 [source,php]
 ----
+namespace MyNamespace;
 use PHPLRPM\Cluster\ShardingConfigurationSource;
 
-class LRPMWorkerShardingConfiguration extends ShardingConfigurationSource
+class MyLRPMWorkerShardingConfiguration extends ShardingConfigurationSource
 {
     public function __construct()
     {
         //instance of PHPLRPM\ConfigurationSource
-        $this->confSource = new WorkerConfiguration()
+        $this->confSource = new MyLRPMWorkerConfiguration()
         //instance of PHPLRPM\Cluster\Providers\ClusterConfigurationProvider
         $this->clusterConfProvider = new EnvironmentBasedClusterConfigurationProvider();
         //instance of PHPLRPM\Cluster\Filters\ShardingConfigurationFilter
@@ -24,14 +25,11 @@ class LRPMWorkerShardingConfiguration extends ShardingConfigurationSource
 }
 ----
 
-Then you can use pass it to PHP-LRPM's ProcessManager as usual:
+Then you can pass it to LRPM binary as an argument:
 
-[source,php]
+[source,console]
 ----
-use PHPLRPM\ProcessManager;
-
-$pm = new ProcessManager(LRPMWorkerShardingConfiguration::class);
-$pm->run();
+bin/lrpm '\MyNamespace\MyLRPMWorkerShardingConfiguration'
 ----
 
 == Sharding Strategies
