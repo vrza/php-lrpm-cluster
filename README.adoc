@@ -25,7 +25,7 @@ class MyLRPMWorkerShardingConfiguration extends ShardingConfigurationSource
 }
 ----
 
-Then you may provide MyLRPMWorkerShardingConfiguration as regular ConfigurationSource for PHP-LRPM, e.g.
+Then you may provide `MyLRPMWorkerShardingConfiguration` as a regular `ConfigurationSource` for PHP-LRPM, e.g.
 [source,console]
 ----
 lrpm '\MyNamespace\MyLRPMWorkerShardingConfiguration'
