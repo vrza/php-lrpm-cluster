@@ -19,13 +19,6 @@ abstract class ShardingConfigurationSource implements ConfigurationSource
     protected $configurationFilter;
 
     abstract public function __construct();
-    /*
-     {
-        $this->confSource = $confSource;
-        $this->clusterConfProvider = $clusterConfProvider;
-        $this->configurationFilter = $configurationFilter;
-     }
-     */
 
     public function loadConfiguration(): array
     {
