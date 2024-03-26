@@ -4,41 +4,10 @@
     "type": "library",
     "keywords": ["php", "long-running", "process", "manager", "cluster"],
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/array-with-secondary-keys"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/cardinal-collections"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/php-symplib"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/text-table-formatter"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/terminal-palette"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/php-lrpm"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/vrza/php-rendezvous-hashing"
-        }
-    ],
     "require": {
         "php": ">=7.1",
-        "php-lrpm/php-lrpm": "dev-main",
-        "php-rendezvous-hashing/php-rendezvous-hashing": "dev-main"
+        "php-lrpm/php-lrpm": "^1.0.0",
+        "php-rendezvous-hashing/php-rendezvous-hashing": "^1.0.0"
     },
     "autoload": {
         "psr-4": {
